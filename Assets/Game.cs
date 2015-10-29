@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour, ISlotClick
 {
-    // MINIMUM LENGTH MUST BE 2
+    // Range : 2 to 46,340 (Square root of 2,147,483,647)
     public const int LENGTH = 5;
     public const int MAX_TURNS = LENGTH * LENGTH;
 
