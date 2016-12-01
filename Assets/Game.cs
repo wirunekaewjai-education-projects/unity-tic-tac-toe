@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Game : MonoBehaviour, ISlotClick
@@ -90,14 +90,15 @@ public class Game : MonoBehaviour, ISlotClick
         {
             string firstWord = slots[0, y].GetText();
 
-            if (string.IsNullOrEmpty(firstWord))
-                break;
+//            if (string.IsNullOrEmpty(firstWord))
+//                break;
 
             bool finished = true;
             for (int x = 1; x < LENGTH; x++)
             {
                 string otherWord = slots[x, y].GetText();
-                if (!string.Equals(firstWord, otherWord))
+
+                if (string.IsNullOrEmpty(otherWord) || !string.Equals(firstWord, otherWord))
                 {
                     finished = false;
                     break;
@@ -119,14 +120,15 @@ public class Game : MonoBehaviour, ISlotClick
         {
             string firstWord = slots[x, 0].GetText();
 
-            if (string.IsNullOrEmpty(firstWord))
-                break;
+//            if (string.IsNullOrEmpty(firstWord))
+//                break;
 
             bool finished = true;
             for (int y = 0; y < LENGTH; y++)
             {
                 string otherWord = slots[x, y].GetText();
-                if (!string.Equals(firstWord, otherWord))
+
+                if (string.IsNullOrEmpty(otherWord) || !string.Equals(firstWord, otherWord))
                 {
                     finished = false;
                     break;
@@ -297,6 +299,7 @@ class Slot
         text = obj.AddComponent<Text>();
         text.transform.SetParent(button.transform);
         text.font = font;
+        text.fontSize = 20;
         text.fontStyle = FontStyle.Bold;
         text.color = Color.black;
         text.resizeTextForBestFit = true;
